@@ -1,0 +1,21 @@
+{
+  "name": "mro-pdf-generation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "cd ./src && node ./server.js",
+    "build": "cls && docker build -t pdf-generator-docker . && docker run -p 3000:3000 pdf-generator-docker",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "html-pdf": "^3.0.1",
+    "puppeteer": "^21.3.8"
+  }
+}

@@ -1,0 +1,200 @@
+<div class="back_cover_container">
+    <ul>
+        <li>
+            <span class="information_type">
+                LAUDO INSPEÇÃO
+            </span>
+
+
+            <div class="information_description">
+                <span>N° <%= basicInformations.id %> </span>
+            </div>
+        </li>
+        <li>
+            <span class="information_type">
+                DATA DA VISTORIA
+            </span>
+
+            <div class="information_description">
+                <span>
+                    <%= basicInformations.inspectionDate %>
+                </span>
+            </div>
+        </li>
+        <li>
+            <span class="information_type">
+                ENGENHEIRO CIVIL RESPONSÁVEL
+            </span>
+
+            <div class="information_description">
+                <span>
+                    <%= basicInformations.responsibleCivilEngineer.name %>
+                </span>
+                <span>RNP: <%= basicInformations.responsibleCivilEngineer.identifier %></span>
+            </div>
+        </li>
+        <li>
+            <span class="information_type">
+                CONTRATANTE / SÍNDICO
+            </span>
+
+            <div class="information_description">
+                <span>
+                    <%= basicInformations.clientSpecs.contractorName %>
+                </span>
+                <span>CNPJ: <%= basicInformations.clientSpecs.contractorId %></span>
+                <span>
+                    <%= basicInformations.clientSpecs.syndicName %>
+                </span>
+                <span>CPF: <%= basicInformations.clientSpecs.syndicId %></span>
+            </div>
+        </li>
+        <li>
+            <span class="information_type">
+                OBJETO
+            </span>
+
+            <div class="information_description">
+                <span>
+                    <%= basicInformations.object %>
+                </span>
+            </div>
+        </li>
+        <li>
+            <span class="information_type">
+                LOCAL DA AVALIAÇÃO
+            </span>
+
+            <div class="information_description">
+                <span>
+                    Latitude: <%= basicInformations.evaluationLocation.latitude %> - Longitude: <%=
+                            basicInformations.evaluationLocation.longitude %>
+                </span>
+                <span>
+                    <%= basicInformations.evaluationLocation.address.street %>, <%=
+                            basicInformations.evaluationLocation.address.locationNumber %>
+                </span>
+                <span>
+                    <%= basicInformations.evaluationLocation.address.district %>, <%=
+                            basicInformations.evaluationLocation.address.city %> - <%=
+                                basicInformations.evaluationLocation.address.state %>
+                </span>
+            </div>
+        </li>
+        <li>
+            <span class="information_type">
+                TIPO DE OCUPAÇÃO
+            </span>
+
+            <div class="information_description">
+                <span>
+                    <%= basicInformations.occupationType %>
+                </span>
+            </div>
+        </li>
+        <li>
+            <span class="information_type">
+                IDADE DA EDIFICAÇÃO
+            </span>
+
+            <div class="information_description">
+                <span>
+                    <%= basicInformations.buildingAge %>
+                </span>
+            </div>
+        </li>
+        <li>
+            <span class="information_type">
+                NÚMERO DE PAVIMENTOS
+            </span>
+
+            <div class="information_description">
+                <span>
+                    <%= basicInformations.floors %>
+                </span>
+            </div>
+        </li>
+        <li>
+            <span class="information_type">
+                ÁREA CONSTRUÍDA
+            </span>
+
+            <div class="information_description">
+                <span>
+                    <%= basicInformations.buildingArea %> m²
+                </span>
+            </div>
+        </li>
+        <li>
+            <span class="information_type">
+                ÁREA DO TERRENO
+            </span>
+
+            <div class="information_description">
+                <span>
+                    <%= basicInformations.landArea %> m²
+                </span>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<style>
+    .back_cover_container {
+        position: absolute;
+        top: 91px;
+        width: 595px;
+        padding: 24px 56px 16px 56px;
+        gap: 16px;
+    }
+
+    .back_cover_container ul {
+        width: 483px;
+        list-style: none;
+    }
+
+    .back_cover_container ul li {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+        margin-bottom: 12px;
+    }
+
+    .back_cover_container .information_type {
+        display: flex;
+        align-items: baseline;
+        width: 255.5px;
+        height: 16px;
+
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #1C2024;
+    }
+
+    .back_cover_container .information_type:after {
+        content: '';
+        flex: 1;
+        margin-left: 4px;
+        height: 1px;
+        background-color: #01012E22;
+    }
+
+    .back_cover_container .information_description {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .back_cover_container .information_description span {
+        width: 239.5px;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 16px;
+        letter-spacing: 0px;
+        text-align: left;
+        color: #1C2024;
+    }
+</style>

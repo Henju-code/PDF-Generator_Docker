@@ -1,0 +1,137 @@
+<div class="inspection_level_container">
+    <p>
+        A inspeção predial é classificada quanto
+        a sua complexidade de elaboração do Laudo.
+        Consideradas as características técnicas da
+        edificação, manutenção e operação existentes
+        e necessidade de formação de equipe
+        multidisciplinar para execução dos trabalhos.
+        Os níveis de inspeção predial podem ser
+        classificados em nível 1, nível 2 e nível 3,
+        conforme descrito abaixo:
+    </p>
+
+    <h2>NÍVEL 1</h2>
+
+    <p class="level_definition">
+        <strong>Definição:</strong> Inspeção Predial realizada em
+        edificações com baixa complexidade técnica, de manutenção
+        e de operação de seus elementos e sistemas construtivos.
+        Normalmente empregada em edificações com planos de
+        manutenção muito simples ou inexistentes. A Inspeção
+        Predial nesse nível é elaborada por profissionais
+        habilitados em uma especialidade.
+    </p>
+
+    <h2>NÍVEL 2</h2>
+
+    <p class="level_definition">
+        <strong>Definição:</strong> Inspeção Predial realizada em
+        edificações com média complexidade técnica, de manutenção
+        e de operação de seus elementos e sistemas construtivos,
+        de padrões construtivos médios e com sistemas convencionais.
+        Normalmente empregada em edificações com vários pavimentos,
+        com ou sem plano de manutenção, mas com empresas
+        terceirizadas contratadas para execução de atividades
+        específicas como: manutenção de bombas, portões,
+        reservatórios de água, dentre outros. A Inspeção Predial
+        nesse nível é elaborada por profissionais habilitados em uma
+        ou mais especialidades.
+    </p>
+
+    <h2>NÍVEL 3</h2>
+
+    <p class="level_definition">
+        <strong>Definição:</strong> Inspeção Predial realizada em
+        edificações com alta complexidade técnica, de manutenção e
+        operação de seus elementos e sistemas construtivos, de
+        padrões construtivos superiores e com sistemas mais
+        sofisticados. Normalmente empregada em edificações com
+        vários pavimentos ou com sistemas construtivos com automação.
+        Nesse nível de inspeção predial, obrigatoriamente, é
+        executado na edificação um Manutenção com base na ABNT NBR
+        5674. Possui, ainda, profissional habilitado responsável
+        técnico, plano de manutenção com atividades planejadas e
+        procedimentos detalhados, software de gerenciamento, e outras
+        ferramentas de gestão do sistema de manutenção existente. A
+        Inspeção Predial nesse nível é elaborada por profissionais
+        habilitados e de mais de uma especialidade. Nesse nível de
+        inspeção, o trabalho poderá ser intitulado como de Auditoria
+        Técnica.
+    </p>
+
+    <p>
+        A vistoria do Condomínio foi realizada com equipamentos
+        e aparelhos, bem como análises de documentos técnicos
+        específicos, consoante à complexidade dos sistemas
+        construtivos existentes. A Inspeção Predial nesse nível
+        é elaborada por profissionais habilitados em uma ou mais
+        especialidades.
+    </p>
+
+    <div>
+        Nível de inspeção:
+        <span>
+            NÍVEL <%= inspectionLevel %>
+        </span>
+    </div>
+</div>
+
+<style>
+    .inspection_level_container {
+        position: absolute;
+        width: 595px;
+        height: 656px;
+        top: 91px;
+        padding: 12px 56px 12px 56px;
+        gap: 12px;
+    }
+
+    .inspection_level_container h2 {
+        width: 483px;
+        text-align: left;
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 0.06em;
+        text-align: left;
+        color: #1C2024;
+        padding-bottom: 4px;
+        border-bottom: #1C2024 solid 1px;
+    }
+
+    .inspection_level_container p {
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 18px;
+        margin-bottom: 16px;
+        text-indent: 47.22px;
+        text-align: justify;
+        text-justify: inter-word;
+
+        font-family: Arial;
+        letter-spacing: 0px;
+    }
+
+    .inspection_level_container .level_definition {
+        text-indent: 0;
+        margin-top: 4px;
+    }
+
+    .inspection_level_container strong {
+        font-size: 10px;
+        line-height: 18px;
+        font-weight: 700;
+        letter-spacing: 0px;
+
+    }
+
+    .inspection_level_container div {
+        font-family: Arial;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 20px;
+        letter-spacing: 0px;
+        text-align: left;
+    }
+</style>

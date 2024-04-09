@@ -1,0 +1,106 @@
+<div class="tests_performed_and_responsabilities_container">
+    <div id="tests_carried_out_container">        
+    </div>
+
+    <div class="title_container">
+        <h2>
+            <%= title %>
+        </h2>
+    </div>
+
+    <div>
+        <p>
+            O profissional é o responsável único e exclusivamente pelo
+            escopo e pelo nível de inspeção contratada. Exime-se de
+            qualquer responsabilidade técnica o profissional, quando as
+            observações e orientações existentes no laudo de inspeção
+            não forem implementadas pelo proprietário ou responsável
+            legal da edificação, bem como por qualquer anomalia e falha
+            decorrente de deficiências da não manutenção ou recomendações
+            de segurança não seguidas.
+        </p>
+
+        <p>
+            A empresa contratada para realizar os serviços apontado no
+            laudo, deverá possuir um responsável técnico e esse deverá
+            emitir uma ART (Anotação de Responsabilidade Técnica)
+            descrevendo os serviços aos qual foram contratados para
+            executar.
+        </p>
+
+        <p>
+            Exime-se de qualquer responsabilidade técnica a empresa ou
+            profissional, sobre a análise de elementos, componentes,
+            subsistemas e locais onde não foi possível executar a
+            Inspeção Predial.
+        </p>
+    </div>
+</div>
+
+<style>
+    .tests_performed_and_responsabilities_container div {
+        width: 595px;
+        height: auto;
+        padding: 12px 56px 12px 56px;
+        gap: 16px;
+    }
+
+    .tests_performed_and_responsabilities_container p {
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 18px;
+        text-indent: 47.22px;
+        text-align: justify;
+        text-justify: inter-word;
+        margin-bottom: 8px;
+    }
+
+    .tests_performed_and_responsabilities_container #tests_carried_out_container p:first-child {
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 18px;
+        text-indent: 0px;
+        text-align: justify;
+        text-justify: inter-word;
+        margin-bottom: 8px;
+    }
+
+    .tests_performed_and_responsabilities_container strong {
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 18px;
+        text-align: left;
+    }
+
+    .tests_performed_and_responsabilities_container ul {
+        margin-bottom: 8px;
+    }
+
+    .tests_performed_and_responsabilities_container .title_container {
+        width: 595px;
+        height: 35px;
+        padding: 0px 40px 0px 40px;
+        background-color: #00ADEE14;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px
+    }
+
+    .tests_performed_and_responsabilities_container h2 {
+        width: 515px;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 12px;
+        text-align: center;
+        color: #1C2024;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', async function () {
+        const decodedHTMLContent = decodeURIComponent("<%= pageContent %>");
+
+        document.getElementById('tests_carried_out_container').innerHTML = decodedHTMLContent;
+    });
+</script>

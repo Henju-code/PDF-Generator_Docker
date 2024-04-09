@@ -1,0 +1,260 @@
+<div class="generic_page_container">
+
+
+    <p>
+        Abaixo, elencamos os principais itens que serão vistoriado na edificação.
+    </p>
+
+    <!-- Limite de 33 items na primeira pagina -->
+    <table>
+        <tr>
+            <th>DESCRIÇÃO</th>
+            <th>VERIFICADO</th>
+            <th>OBSERVAÇÕES</th>
+        </tr>
+
+        <%_ for(let i=0; i < categoriesAndSubCategories.length; i++) { -%>
+            <tr class="verification_category">
+                <td class="category_title">
+                    <%=categoriesAndSubCategories[i].item%>
+                        <%=categoriesAndSubCategories[i].description%>
+                </td>
+                <td></td>
+                <td class="category_comments">
+                    <% if(categoriesAndSubCategories[i].comments) { %>
+                        <span>
+                            <%=categoriesAndSubCategories[i].comments%>
+                        </span>
+                        <% } else { %>
+                            <span> - </span>
+                            <% } %>
+                </td>
+            </tr>
+
+            <%_ for(let j=0; j < categoriesAndSubCategories[i].subCategories.length; j++) { -%>
+                <tr>
+                    <td>
+                        <%=categoriesAndSubCategories[i].subCategories[j].description%>
+                    </td>
+                    <td class="verification_status">
+                        <% if(categoriesAndSubCategories[i].subCategories[j].status) { %>
+                            <svg width="71" height="14" viewBox="0 0 71 14" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M29.3334 4.5L24.7501 9.08333L22.6667 7" stroke="#299764" stroke-width="1.2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M35.4492 7.63672L36.5742 7.52734C36.6419 7.90495 36.7786 8.18229 36.9844 8.35938C37.1927 8.53646 37.4727 8.625 37.8242 8.625C38.1966 8.625 38.4766 8.54688 38.6641 8.39062C38.8542 8.23177 38.9492 8.04688 38.9492 7.83594C38.9492 7.70052 38.9089 7.58594 38.8281 7.49219C38.75 7.39583 38.612 7.3125 38.4141 7.24219C38.2786 7.19531 37.9701 7.11198 37.4883 6.99219C36.8685 6.83854 36.4336 6.64974 36.1836 6.42578C35.832 6.11068 35.6562 5.72656 35.6562 5.27344C35.6562 4.98177 35.7383 4.70964 35.9023 4.45703C36.069 4.20182 36.3073 4.00781 36.6172 3.875C36.9297 3.74219 37.306 3.67578 37.7461 3.67578C38.4648 3.67578 39.0052 3.83333 39.3672 4.14844C39.7318 4.46354 39.9232 4.88411 39.9414 5.41016L38.7852 5.46094C38.7357 5.16667 38.6289 4.95573 38.4648 4.82812C38.3034 4.69792 38.0599 4.63281 37.7344 4.63281C37.3984 4.63281 37.1354 4.70182 36.9453 4.83984C36.8229 4.92839 36.7617 5.04688 36.7617 5.19531C36.7617 5.33073 36.819 5.44661 36.9336 5.54297C37.0794 5.66536 37.4336 5.79297 37.9961 5.92578C38.5586 6.05859 38.974 6.19661 39.2422 6.33984C39.513 6.48047 39.724 6.67448 39.875 6.92188C40.0286 7.16667 40.1055 7.47005 40.1055 7.83203C40.1055 8.16016 40.0143 8.46745 39.832 8.75391C39.6497 9.04036 39.3919 9.25391 39.0586 9.39453C38.7253 9.53255 38.3099 9.60156 37.8125 9.60156C37.0885 9.60156 36.5326 9.4349 36.1445 9.10156C35.7565 8.76562 35.5247 8.27734 35.4492 7.63672ZM41.0703 4.78906V3.77344H42.168V4.78906H41.0703ZM41.0703 9.5V5.35156H42.168V9.5H41.0703ZM43.2148 5.35156H44.2266V5.91797C44.5885 5.47786 45.0195 5.25781 45.5195 5.25781C45.7852 5.25781 46.0156 5.3125 46.2109 5.42188C46.4062 5.53125 46.5664 5.69661 46.6914 5.91797C46.8737 5.69661 47.0703 5.53125 47.2812 5.42188C47.4922 5.3125 47.7174 5.25781 47.957 5.25781C48.2617 5.25781 48.5195 5.32031 48.7305 5.44531C48.9414 5.56771 49.099 5.7487 49.2031 5.98828C49.2786 6.16536 49.3164 6.45182 49.3164 6.84766V9.5H48.2188V7.12891C48.2188 6.71745 48.181 6.45182 48.1055 6.33203C48.0039 6.17578 47.8477 6.09766 47.6367 6.09766C47.4831 6.09766 47.3385 6.14453 47.2031 6.23828C47.0677 6.33203 46.9701 6.47005 46.9102 6.65234C46.8503 6.83203 46.8203 7.11719 46.8203 7.50781V9.5H45.7227V7.22656C45.7227 6.82292 45.7031 6.5625 45.6641 6.44531C45.625 6.32812 45.5638 6.24089 45.4805 6.18359C45.3997 6.1263 45.2891 6.09766 45.1484 6.09766C44.9792 6.09766 44.8268 6.14323 44.6914 6.23438C44.556 6.32552 44.4583 6.45703 44.3984 6.62891C44.3411 6.80078 44.3125 7.08594 44.3125 7.48438V9.5H43.2148V5.35156Z"
+                                    fill="#299764" />
+                            </svg>
+
+                            <% } else { %>
+                                <svg width="71" height="14" viewBox="0 0 71 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M28 4.5L23 9.5M23 4.5L28 9.5" stroke="#C62A2F" stroke-width="1.2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M35.5312 9.5V3.77344H36.6562L39 7.59766V3.77344H40.0742V9.5H38.9141L36.6055 5.76562V9.5H35.5312ZM42.1133 6.61719L41.1172 6.4375C41.2292 6.03646 41.4219 5.73958 41.6953 5.54688C41.9688 5.35417 42.375 5.25781 42.9141 5.25781C43.4036 5.25781 43.7682 5.31641 44.0078 5.43359C44.2474 5.54818 44.4154 5.69531 44.5117 5.875C44.6107 6.05208 44.6602 6.37891 44.6602 6.85547L44.6484 8.13672C44.6484 8.5013 44.6654 8.77083 44.6992 8.94531C44.7357 9.11719 44.8021 9.30208 44.8984 9.5H43.8125C43.7839 9.42708 43.7487 9.31901 43.707 9.17578C43.6888 9.11068 43.6758 9.06771 43.668 9.04688C43.4805 9.22917 43.2799 9.36589 43.0664 9.45703C42.8529 9.54818 42.625 9.59375 42.3828 9.59375C41.9557 9.59375 41.6185 9.47786 41.3711 9.24609C41.1263 9.01432 41.0039 8.72135 41.0039 8.36719C41.0039 8.13281 41.0599 7.92448 41.1719 7.74219C41.2839 7.55729 41.4401 7.41667 41.6406 7.32031C41.8438 7.22135 42.1354 7.13542 42.5156 7.0625C43.0286 6.96615 43.3841 6.8763 43.582 6.79297V6.68359C43.582 6.47266 43.5299 6.32292 43.4258 6.23438C43.3216 6.14323 43.125 6.09766 42.8359 6.09766C42.6406 6.09766 42.4883 6.13672 42.3789 6.21484C42.2695 6.29036 42.181 6.42448 42.1133 6.61719ZM43.582 7.50781C43.4414 7.55469 43.2188 7.61068 42.9141 7.67578C42.6094 7.74089 42.4102 7.80469 42.3164 7.86719C42.1732 7.96875 42.1016 8.09766 42.1016 8.25391C42.1016 8.40755 42.1589 8.54036 42.2734 8.65234C42.388 8.76432 42.5339 8.82031 42.7109 8.82031C42.9089 8.82031 43.0977 8.75521 43.2773 8.625C43.4102 8.52604 43.4974 8.40495 43.5391 8.26172C43.5677 8.16797 43.582 7.98958 43.582 7.72656V7.50781ZM42.1055 4.79297H41.6055C41.6029 4.73307 41.6016 4.6862 41.6016 4.65234C41.6016 4.37891 41.668 4.16927 41.8008 4.02344C41.9336 3.875 42.1042 3.80078 42.3125 3.80078C42.4036 3.80078 42.4883 3.8112 42.5664 3.83203C42.6445 3.85026 42.7865 3.90625 42.9922 4C43.2005 4.09115 43.3633 4.13672 43.4805 4.13672C43.5638 4.13672 43.6328 4.11068 43.6875 4.05859C43.7448 4.00651 43.7812 3.91927 43.7969 3.79688H44.3047C44.3021 4.14844 44.2357 4.39974 44.1055 4.55078C43.9779 4.70182 43.8125 4.77734 43.6094 4.77734C43.5208 4.77734 43.4336 4.76823 43.3477 4.75C43.2878 4.73438 43.138 4.68099 42.8984 4.58984C42.6589 4.4987 42.4844 4.45312 42.375 4.45312C42.2917 4.45312 42.2266 4.47917 42.1797 4.53125C42.1328 4.58073 42.1081 4.66797 42.1055 4.79297ZM45.4922 7.36719C45.4922 7.0026 45.582 6.64974 45.7617 6.30859C45.9414 5.96745 46.1953 5.70703 46.5234 5.52734C46.8542 5.34766 47.2227 5.25781 47.6289 5.25781C48.2565 5.25781 48.7708 5.46224 49.1719 5.87109C49.5729 6.27734 49.7734 6.79167 49.7734 7.41406C49.7734 8.04167 49.5703 8.5625 49.1641 8.97656C48.7604 9.38802 48.2513 9.59375 47.6367 9.59375C47.2565 9.59375 46.8932 9.50781 46.5469 9.33594C46.2031 9.16406 45.9414 8.91276 45.7617 8.58203C45.582 8.2487 45.4922 7.84375 45.4922 7.36719ZM46.6172 7.42578C46.6172 7.83724 46.7148 8.15234 46.9102 8.37109C47.1055 8.58984 47.3464 8.69922 47.6328 8.69922C47.9193 8.69922 48.1589 8.58984 48.3516 8.37109C48.5469 8.15234 48.6445 7.83464 48.6445 7.41797C48.6445 7.01172 48.5469 6.69922 48.3516 6.48047C48.1589 6.26172 47.9193 6.15234 47.6328 6.15234C47.3464 6.15234 47.1055 6.26172 46.9102 6.48047C46.7148 6.69922 46.6172 7.01432 46.6172 7.42578Z"
+                                        fill="#C62A2F" />
+                                </svg>
+                                <% } %>
+                    </td>
+                    <td class="category_comments">
+                        <% if(categoriesAndSubCategories[i].subCategories[j].comments) { %>
+                            <span>
+                                <%=categoriesAndSubCategories[i].subCategories[j].comments%>
+                            </span>
+                            <% } else { %>
+                                <span> - </span>
+                                <% } %>
+                    </td>
+                </tr>
+                <%_ } -%>
+                    <%_ } -%>
+
+    </table>
+</div>
+<style>
+    .verification_list_container {
+        position: absolute;
+        width: 595px;
+        top: 91px;
+        padding: 12px 56px 12px 56px;
+        gap: 12px;
+    }
+
+    .verification_list_container p {
+        width: 483px;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 18px;
+        text-align: left;
+        margin-bottom: 16px;
+    }
+
+    .verification_list_container table {
+        width: 483px;
+        border-collapse: collapse;
+        border: #0007139F solid 1px;
+    }
+
+    .verification_list_container table tr {
+        width: 483px;
+        height: 18px;
+        gap: 4px;
+        padding: 2.5px 12px 2.5px 12px;
+        border: #1C2024 solid 0.5px;
+    }
+
+    .verification_list_container table tr:first-child {
+        background-color: #00003B0D;
+    }
+
+    .verification_list_container th {
+        color: #1C2024;
+        font-family: Arial;
+        font-size: 7px;
+        font-weight: 700;
+        line-height: 13px;
+        letter-spacing: 0px;
+        text-align: center;
+    }
+
+    .verification_list_container th:first-child {
+        width: 300px;
+        height: 13px;
+    }
+
+    .verification_list_container th:nth-child(2) {
+        width: 71px;
+        height: 13px;
+    }
+
+    .verification_list_container th:nth-child(3) {
+        width: 80;
+        height: 13px;
+    }
+
+    .verification_list_container td {
+        text-transform: uppercase;
+        color: #1C2024;
+        font-size: 7px;
+        font-weight: 400;
+        line-height: 11px;
+        letter-spacing: 0px;
+        text-align: center;
+    }
+
+    .verification_list_container .verification_status svg {
+        width: 71px;
+        height: 13px;
+    }
+
+    .verification_list_container .verification_category {
+        background-color: #05055806;
+    }
+
+    .verification_list_container .category_title {
+        font-family: Arial;
+        font-size: 7px;
+        font-weight: 700;
+        line-height: 11px;
+        letter-spacing: 0px;
+        text-align: center;
+    }
+
+    .verification_list_container .verification_status {
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<style>
+    .generic_page_container div {
+        position: absolute;
+        width: 595px;
+        height: 695px;
+        top: 91px;
+        padding: 12px 56px 12px 56px;
+        gap: 16px;
+    }
+
+    .generic_page_container div p {
+        text-indent: 47.22px;
+        text-align: justify;
+        text-justify: inter-word;
+
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0px;
+        text-align: justified;
+    }
+
+    .generic_page_container div p strong {
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 18px;
+        letter-spacing: 0px;
+        text-align: justified;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const decodedHTMLContent = decodeURIComponent("<%= pageContent %>");
+
+        // const pages = splitHtmlIntoPages(decodedHTMLContent);
+
+        // for (let index = 0; index < pages.length; index++) {
+        //     createPageElement(pages[index], index);
+        // }
+
+        // function splitHtmlIntoPages(htmlContent) {
+        //     const wrapper = document.createElement('div');
+        //     wrapper.innerHTML = htmlContent;
+
+        //     const pagesList = [];
+        //     let currentPage = document.createElement('div');
+        //     let pageHeight = 0;
+
+        //     Array.from(wrapper.children).forEach(function (child) {
+        //         pageHeight += child.offsetHeight;
+
+        //         if (pageHeight <= 695) {
+        //             currentPage.appendChild(child);
+
+        //         } else {
+        //             pagesList.push(currentPage.innerHTML);
+        //             currentPage.innerHTML = '';
+        //             currentPage.appendChild(child);
+        //             pageHeight = child.offsetHeight;
+        //         }
+        //     });
+
+        //     if (currentPage.innerHTML.trim() !== '') {
+        //         pagesList.push(currentPage.innerHTML);
+        //     }
+
+        //     return pagesList;
+        // }
+
+        // function createPageElement(content, index) {
+        //     const page = document.createElement('div');
+        //     page.classList.add('page');
+        //     page.innerHTML = content;
+        //     document.body.appendChild(page);
+        // }
+
+
+        // Função de Leitura dos dados vindos do editor de texto
+        // const decodedHTMLContent = decodeURIComponent("<%= pageContent %>");
+        const selectedPage = document.querySelector(".generic_page_container");
+        const newElement = document.createElement('div');
+
+        newElement.innerHTML = decodedHTMLContent;
+        selectedPage.appendChild(newElement);
+        // ######################################################################
+    });
+</script>

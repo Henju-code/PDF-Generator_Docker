@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: 8px;
+            line-height: 14px;
+        }
+
+        body {
+            background-color: #000;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .page_format_container {
+            position: relative;
+            background-color: #FCFCFD;
+            width: 595px;
+            height: 842px;
+        }
+
+        .page_changeable_container {
+            position: relative;
+            background-color: #FCFCFD;
+            width: 595px;
+            height: auto;
+        }
+
+        #cover {
+            background-color: #E2EDF1;
+        }
+    </style>
+
+    <script>
+        const GLOBAL_STATE = {
+            SUMMARY: [],
+
+            TOTAL_PAGES_NUMBER: 0
+        }
+
+        function INCREMENT() {
+            GLOBAL_STATE.TOTAL_PAGES_NUMBER++;
+        }
+
+        function ADD_PAGE_TO_SUMARY(pageTitle, pageNumber) {
+            GLOBAL_STATE.SUMMARY.push({
+                pageTitle,
+                pageNumber
+            })
+        }
+
+        function ADD_SECTION_TO_SUMARY(sectionTitle) {
+            INCREMENT();
+
+            GLOBAL_STATE.SUMMARY.push({
+                sectionTitle,
+                sectionStartNumber: GLOBAL_STATE.TOTAL_PAGES_NUMBER,
+                categories: [],
+            })
+
+        }
+
+        const ANOMALIES_AND_FAILURES_ARRAY_POSITION = 7;
+
+        function ADD_CATEGORY_TO_SECTION(categoryName, pageNumber) {
+            GLOBAL_STATE.SUMMARY[ANOMALIES_AND_FAILURES_ARRAY_POSITION].categories.push({
+                categoryName,
+                pageNumber,
+                subCategories: []
+            })
+        }
+
+        function ADD_SUB_CATEGORY_TO_SECTION(subCategoryName, pageNumber, categoryIndex) {
+            GLOBAL_STATE.SUMMARY[ANOMALIES_AND_FAILURES_ARRAY_POSITION].categories[categoryIndex].subCategories.push({ 
+                subCategoryName,
+                pageNumber,
+            })
+        }
+    </script>
+</head>
+<body>
+    <!-- Na parte Lista de verificação, conferir a falha de alinhamento na segunda página -->
+    <!-- Definir maxWidth e maxHeight para os elementos img -->
+    <!-- Colocar valores padrões para quando não vier os dados da requisição -->
+    <section id="cover" class="page_format_container">
+        <%- include ( '../../partials/pages/cover.ejs' , { basicInformations: data.basicInformations }) %>
+    </section>
+
+    <section id="back_cover" class="page_format_container">
+        <%- include ('../../partials/components/header.ejs') %>
+            <%- include ('../../partials/components/pageTitle.ejs', {title: "INFORMAÇÕES INICIAIS" }) %>
+                <%- include ('../../partials/pages/backCover.ejs', {basicInformations: data.basicInformations}) %>
+                    <%- include ('../../partials/components/footerWithoutPageCounter.ejs') %>
+    </section>
+
+    <section id="introduction" class="page_changeable_container">
+        <%- include ('../../partials/pages/simpleInputWrapper.ejs', {pageContent: data.pagesInfo.pages[0].pageContent,
+            pageTitle: data.pagesInfo.pages[0].pageTitle }) %>
+    </section>
+
+    <section id="documents_requested_delivered_and_analyzed" class="page_changeable_container">
+        <%- include ('../../partials/pages/documentsRequestedDeliveredAndAnalyzed.ejs', { pageTitle: data.pagesInfo.pages[1].pageTitle, pageContent: data.pagesInfo.pages[1].pageContent }) %>
+    </section>
+
+    <section id="categories_and_subcategories_verification_list" class="page_changeable_container">
+        <%- include ('../../partials/pages/categoriesAndSubcategoriesVerificationList.ejs', {categoriesAndSubCategories:
+            data.categoriesAndSubCategories, tableDataArray: data.tableDataArray, pageTitle:
+            data.pagesInfo.pages[2].pageTitle}) %>
+    </section>
+
+    <section id="inspection_level" class="page_format_container">
+        <%- include ('../../partials/components/header.ejs') %>
+            <%- include ('../../partials/components/pageTitle.ejs', {title: "NÍVEL DA INSPEÇÃO – RIGOR DO LAUDO" }) %>
+                <%- include ('../../partials/pages/inspectionLevel.ejs', {inspectionLevel: data.inspectionLevel}) %>
+                    <%- include ('../../partials/components/footer.ejs', {pageTitle: data.pagesInfo.pages[3].pageTitle }) %>
+    </section>
+
+    <section id="risk_level" class="page_format_container">
+        <%- include ('../../partials/components/header.ejs') %>
+            <%- include ('../../partials/components/pageTitle.ejs', {title: "GRAU DE RISCO" }) %>
+                <%- include ('../../partials/pages/riskLevel.ejs') %>
+                    <%- include ('../../partials/components/footer.ejs', {pageTitle: data.pagesInfo.pages[4].pageTitle }) %>
+    </section>
+
+    <section id="building_inspection_method" class="page_format_container">
+        <%- include ('../../partials/components/header.ejs') %>
+            <%- include ('../../partials/components/pageTitle.ejs', {title: "CRITÉRIO E MÉTODO DA INSPEÇÃO PREDIAL" }) %>
+                <%- include ('../../partials/pages/buildingInspectionMethod.ejs') %>
+                    <%- include ('../../partials/components/footer.ejs', {pageTitle: data.pagesInfo.pages[5].pageTitle }) %>
+    </section>
+
+    <section id="tests_performed_and_responsabilities" class="page_format_container">
+        <%- include ('../../partials/components/header.ejs') %>
+            <%- include ('../../partials/components/pageTitle.ejs', {title: "ENSAIOS REALIZADOS" }) %>
+                <%- include ('../../partials/pages/testsPerformedAndResponsabilities.ejs', {title: "RESPONSABILIDADES" ,
+                    pageContent: data.pagesInfo.pages[6].pageContent }) %>
+                    <%- include ('../../partials/components/footer.ejs', {pageTitle: data.pagesInfo.pages[6].pageTitle }) %>
+    </section>
+
+    <section id="anomalies_and_failures_classification_list" class="page_changeable_container">
+        <%- include ('../../partials/pages/anomaliesAndFailuresClassificationList.ejs', { pageTitle: data.pagesInfo.pages[8].pageTitle,
+            pageContent: data.pagesInfo.pages[8].pageContent }) %>
+    </section>
+
+    <section id="precautions_in_private_areas" class="page_changeable_container">
+        <%- include ('../../partials/pages/precautionsInPrivateAreas.ejs', {pageTitle: data.pagesInfo.pages[9].pageTitle,
+            precautionsArray: data.precautionsArray }) %>
+    </section>
+
+    <section id="assessment_of_maintenance_and_use" class="page_changeable_container">
+        <%- include ('../../partials/pages/simpleInputWrapper.ejs', { pageTitle: data.pagesInfo.pages[10].pageTitle,
+            pageContent: data.pagesInfo.pages[10].pageContent }) %>
+    </section>
+
+    <section id="activity_schedule" class="page_changeable_container">
+        <%- include ('../../partials/pages/activitySchedule.ejs', { pageTitle: data.pagesInfo.pages[11].pageTitle,
+            pageContent: data.pagesInfo.pages[11].pageContent, buildingName: data.basicInformations.clientSpecs.contractorName }) %>
+    </section>
+
+    <section id="attached_documents_list" class="page_changeable_container">
+        <%- include ('../../partials/pages/simpleInputWrapper.ejs', { pageTitle: data.pagesInfo.pages[12].pageTitle,
+            pageContent: data.pagesInfo.pages[12].pageContent }) %>
+    </section>
+
+    <section id="conclusion" class="page_changeable_container">
+        <%- include ('../../partials/pages/simpleInputWrapper.ejs', { pageTitle: data.pagesInfo.pages[13].pageTitle,
+            pageContent: data.pagesInfo.pages[13].pageContent }) %>
+    </section>
+
+    <section id="summary" class="page_changeable_container">
+        <%- include ('../../partials/pages/summary.ejs', {pageTitle: "SUMÁRIO" }) %>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const pageTotalIndicators = document.querySelectorAll('.total_pages_number');
+
+            pageTotalIndicators.forEach(function (element) {
+                element.textContent = GLOBAL_STATE.TOTAL_PAGES_NUMBER;
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.body;
+            const sectionsList = container.getElementsByTagName("section");
+            const summaryIndex = sectionsList.length - 1;
+            const summaryContainer = sectionsList[summaryIndex];
+    
+            container.removeChild(summaryContainer);
+            container.insertBefore(summaryContainer, sectionsList[2]);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const activitySchedulesContent = document.getElementById('activity_schedule');
+            const activitySchedulesTables = activitySchedulesContent.getElementsByTagName("table");
+
+            for (let tableIndex = 0; tableIndex < activitySchedulesTables.length; tableIndex++) {
+                const tableRows = activitySchedulesTables[tableIndex].getElementsByTagName('tr');
+
+                for(let index = 1; index < tableRows.length; index++) {
+                    const subCategoryCell = tableRows[index].getElementsByTagName('td')[1];
+                    const pageNumberCell = tableRows[index].getElementsByTagName('td')[2];
+
+                    let pageNumber = "";
+
+                    try {
+                        GLOBAL_STATE.SUMMARY[7].categories.forEach(function(category) {
+                            category.subCategories.forEach(function(subCategory) {
+                                if(subCategory.subCategoryName.slice(6) === subCategoryCell.textContent) {
+                                    pageNumber = subCategory.pageNumber;
+
+                                    throw new Error("Finded sub-category");
+                                }
+                            });
+                        });
+                    } catch (err) {                    
+                        pageNumberCell.textContent += pageNumber;
+                    }                
+                }            
+            }        
+        });
+    </script>
+</body>
+</html>
