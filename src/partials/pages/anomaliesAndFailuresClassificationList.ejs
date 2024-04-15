@@ -204,6 +204,15 @@
         padding: 4px 8px;
     }
 
+    .anomalies_and_failures_classification_technical_recommendations_container img,
+    .anomalies_and_failures_classification_maintenance_recommendations_container img{
+        max-width: 460px;
+        height: auto;
+        object-fit: scale-down;
+        display: block;
+        margin: auto;
+    }
+
     .anomalies_and_failures_classification_technical_recommendations_container h3,
     .anomalies_and_failures_classification_maintenance_recommendations_container h3{
         margin-left: -8px;
@@ -250,6 +259,13 @@
     .loading_corrections_on_the_page_building img{
         width: 460px;
         height: 278.62px;
+    }
+
+    .loading_corrections_on_the_page_building .anomalies_and_failures_classification_technical_recommendations_container img,
+    .loading_corrections_on_the_page_building .anomalies_and_failures_classification_maintenance_recommendations_container img{
+        max-width: 460px !important; 
+        height: auto !important;
+        object-fit: scale-down;
     }
 </style>
 <script>
@@ -440,7 +456,11 @@
             ADD_SECTION_TO_SUMARY("CLASSIFICAÇÃO DAS ANOMALIAS E FALHAS – ÁREAS COMUM");
 
             Array.from(htmlNodeSet.children).forEach(function (child) {
-                if(PAGE_CONTENT_ARRAY.length > 0 && child.tagName === 'H2' && child.textContent.charAt(2) !== '1' && CURRENT_PAGE.innerHTML.trim() !== ""){
+                if(
+                    PAGE_CONTENT_ARRAY.length > 0 && child.tagName === 'H2' && 
+                    (child.textContent.charAt(2) !== '1' || (child.textContent.charAt(2) === '.' && child.textContent.charAt(3) !== '1')) 
+                    && CURRENT_PAGE.innerHTML.trim() !== ""
+                ){
                     PAGE_CONTENT_ARRAY.push(CURRENT_PAGE.innerHTML);
                     CURRENT_PAGE.innerHTML = "";
                 }

@@ -91,7 +91,7 @@
 
                     for (let categoryIndex = 0; categoryIndex < GLOBAL_STATE.SUMMARY[index].categories.length; categoryIndex++) {
                         const category = GLOBAL_STATE.SUMMARY[index].categories[categoryIndex];
-                        summaryCategories += `<li class="section_category_identification"><span><strong>${category.categoryName.slice(0,3)}</strong>${category.categoryName.slice(3)}</span><div class="summary_sections_list_element_divider"></div><span>${category.pageNumber}</span></li>`; 
+                        summaryCategories += `<li class="section_category_identification"><span><strong>${category.categoryName[2] !== '.' ? category.categoryName.slice(0,3) : category.categoryName.slice(0,4)}</strong>${category.categoryName[2] !== '.' ? category.categoryName.slice(3) : category.categoryName.slice(4)}</span><div class="summary_sections_list_element_divider"></div><span>${category.pageNumber}</span></li>`; 
 
                         for (let subCategoryIndex = 0; subCategoryIndex <  GLOBAL_STATE.SUMMARY[index].categories[categoryIndex].subCategories.length; subCategoryIndex++) {
                             summarySubCategories += `<li class="section_sub_category_identification"><span>${GLOBAL_STATE.SUMMARY[index].categories[categoryIndex].subCategories[subCategoryIndex].subCategoryName.slice(6)}</span><div class="summary_sections_list_element_divider"></div><span>${GLOBAL_STATE.SUMMARY[index].categories[categoryIndex].subCategories[subCategoryIndex].pageNumber}</span></li>`;                          

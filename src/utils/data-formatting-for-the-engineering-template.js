@@ -179,7 +179,7 @@ export default function handleFormatData(
                             </table>
                             <table>
                                 <thead><tr><th>PRAZO PARA MEDIDA SANEADORA</th></tr></thead>
-                                <tbody><tr><td>${subCategoryInfo.deadlineInDaysForRemedialMeasure} DIAS</td></tr></tbody>
+                                <tbody><tr><td>${subCategoryInfo.deadlineInDaysForRemedialMeasure}</td></tr></tbody>
                             </table>
                         </div>
                         <div class="anomaly_location_card_container">

@@ -202,7 +202,7 @@
 </h1>
 
 <address class="cover_address">
-    <%= basicInformations.evaluationLocation.address.city %> - <%= basicInformations.evaluationLocation.address.state %>
+    -
 </address>
 
 <span class="cover_datetime">
@@ -282,19 +282,32 @@
     }
 </style>
 
-<script type="text/javascript">
-    function handleDateTime() {
-        const dateTime = new Date();
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function handleDateTime() {
+            const dateTime = new Date();
 
-        const day = (dateTime.getDate() < 10 ? "0" + dateTime.getDate() : dateTime.getDate());
-        const month = ((dateTime.getMonth() + 1) < 10 ? "0" + (dateTime.getMonth() + 1) : (dateTime.getMonth() + 1));
-        const year = dateTime.getFullYear();
+            const day = (dateTime.getDate() < 10 ? "0" + dateTime.getDate() : dateTime.getDate());
+            const month = ((dateTime.getMonth() + 1) < 10 ? "0" + (dateTime.getMonth() + 1) : (dateTime.getMonth() + 1));
+            const year = dateTime.getFullYear();
 
-        const dateTimeFormated = day + "/" + month + "/" + year;
-        const dateTimeHeader = document.querySelector(".cover_datetime");
-        
-        dateTimeHeader.innerHTML = dateTimeFormated;        
-    }
+            const dateTimeFormated = day + "/" + month + "/" + year;
+            const dateTimeHeader = document.querySelector(".cover_datetime");
+            
+            dateTimeHeader.innerHTML = dateTimeFormated;        
+        }
 
-    handleDateTime();
+        function handleCoverAddress() {
+            const fullAddress = "<%= basicInformations.evaluationLocation.address %>";
+
+            const addressElements = fullAddress.split(',');
+
+            const cityAndState = addressElements[2];
+
+            document.querySelector(".cover_address").innerHTML = cityAndState;
+        }
+
+        handleDateTime();
+        handleCoverAddress();
+    })
 </script>

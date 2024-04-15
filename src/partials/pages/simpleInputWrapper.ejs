@@ -56,7 +56,7 @@
             });
         }
 
-        function shouldBeAddThisChildOnCurrentPage(child) {
+        function shouldBeAddThisChildOnCurrentPage(child) {            
             const maximumHeightAllowed = PAGE_CONTENT_ARRAY.length === 0 ? PAGE_WITH_TITLE_HEIGHT : PAGE_WITHOUT_TITLE_HEIGHT;
 
             CURRENT_PAGE.appendChild(child);
@@ -65,11 +65,23 @@
             const marginBetweenElements = 8;
             const numberOfElementsPresentOnThePage = Array.from(CURRENT_PAGE.children).length;
 
-            const updatedHeight = CURRENT_PAGE.offsetHeight + ( numberOfElementsPresentOnThePage * marginBetweenElements ) + pageHeadMargin;
-
-            CURRENT_PAGE.removeChild(child);
             
-            return updatedHeight <= maximumHeightAllowed;
+
+            // if(child.tagName === "IMG") {
+            //     child.addEventListener('load', () => {
+            //         updatedHeight = CURRENT_PAGE.offsetHeight + ( numberOfElementsPresentOnThePage * marginBetweenElements ) + pageHeadMargin;
+    
+            //         CURRENT_PAGE.removeChild(child);
+                    
+            //         return updatedHeight <= maximumHeightAllowed;
+            //     });
+            // } else {
+                updatedHeight = CURRENT_PAGE.offsetHeight + ( numberOfElementsPresentOnThePage * marginBetweenElements ) + pageHeadMargin;
+    
+                CURRENT_PAGE.removeChild(child);
+                
+                return updatedHeight <= maximumHeightAllowed;
+            // }
         }
 
         function handleListItemsOnCurrentPage(
@@ -186,13 +198,65 @@
         }
         
         function splitNodesIntoPages(htmlNodeSet) {
-            Array.from(htmlNodeSet.children).forEach(function (child) {
-                if(shouldBeAddThisChildOnCurrentPage(child)) {
-                    CURRENT_PAGE.appendChild(child);
-                } else {
-                    handlePageBreak(child);
-                }
-            })
+            for (let child of Array.from(htmlNodeSet.children)) {
+                // if(child.tagName === "IMG") {     
+                //     let updatedHeight = 0;
+                //     let updatedWidth = 0;
+
+                //     const imagePromise = new Promise((resolve, reject) => {  
+                //         child.addEventListener('load', () => {
+                //             const imageNaturalWidth = child.naturalWidth;
+                //             const imageMaxWidth = 483;
+
+                //             updatedWidth = imageNaturalWidth > imageMaxWidth ? imageMaxWidth : imageNaturalWidth;
+                //             updatedHeight = imageNaturalWidth > imageMaxWidth ? (child.naturalHeight * imageMaxWidth) / imageNaturalWidth : child.naturalHeight;
+                        
+                //             const styleContainer = document.createElement('style');
+
+                //             const cssClassName = "image_input_wrapper_" + uuidv4();
+
+                //             const cssClassContent = `
+                //                 .${cssClassName} {
+                //                     width: ${updatedWidth}px !important;
+                //                     height: ${updatedHeight.toFixed(2)}px !important;
+                //                     object-fit: scale-down !important;
+                //                 }
+                //             `;
+
+                //             styleContainer.innerHTML = cssClassContent;
+
+                //             document.head.appendChild(styleContainer);
+
+                //             child.classList.add(cssClassName);
+
+                //             resolve();
+                //         });  
+                        
+                //         child.onerror = (error) => {
+                //             reject(error); 
+                //         };
+                //     });                       
+                    
+                //     imagePromise.then(() => {
+                //         console.log('A imagem foi carregada com sucesso!');
+                //         console.log(shouldBeAddThisChildOnCurrentPage(child));
+
+                //         if(shouldBeAddThisChildOnCurrentPage(child)) {
+                //             CURRENT_PAGE.appendChild(child);
+                //         } else {
+                //             handlePageBreak(child);
+                //         }
+                //     }).catch((error) => {
+                //         console.error('Erro ao carregar a imagem:', error);
+                //     });                      
+                // } else {
+                    if(shouldBeAddThisChildOnCurrentPage(child)) {
+                        CURRENT_PAGE.appendChild(child);
+                    } else {
+                        handlePageBreak(child);
+                    }
+                // }
+            }
         }
 
         function createPages() {
